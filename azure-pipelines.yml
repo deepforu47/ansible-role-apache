@@ -7,7 +7,7 @@ pool:
 
 steps:
 
-- checkout: git://deepforu47/ansible-role-apache
+- checkout: git://github.com/deepforu47/ansible-role-apache
   path: ansible-role-apache
 
 - task: UsePythonVersion@0
