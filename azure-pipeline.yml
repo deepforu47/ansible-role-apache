@@ -1,0 +1,27 @@
+---
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-16.04
+
+steps:
+
+- checkout: git://deepforu47/ansible-role-apache
+  path: ansible-role-apache
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+
+- script: python -m pip install "molecule[lint]" "python-vagrant" "molecule-podman" "ansible"
+  displayName: Install dependencies
+
+- script: python -m pip install "python-tss-sdk"
+  displayName: Role-specific dependencies
+
+- script: |
+    export PATH="$PATH:/home/<user>/.local/bin/"
+    cd $(Agent.BuildDirectory)/ansible-role-apache
+    molecule test
+  displayName: Test relevant platforms
