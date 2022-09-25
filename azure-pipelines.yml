@@ -1,6 +1,9 @@
 ---
-trigger:
-- feature*
+pr:
+  branches:
+    include:
+    - master
+    - feature*
 
 pool:
   vmImage: 'ubuntu-latest'
