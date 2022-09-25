@@ -7,7 +7,7 @@ pool:
 
 steps:
 
-- checkout: git://ansible-role-apache/role-name
+- checkout: git://kulsharm2/role-name
   path: role-name
 
 - task: UsePythonVersion@0
