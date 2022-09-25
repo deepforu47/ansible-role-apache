@@ -20,8 +20,8 @@ variables:
   value: "$PATH:/usr/local/bin"
 - name: MOLECULE_SCENARIO_NAME
   value: "default"
-- name: VERIFIER_NAME
-  value: "testinfra"
+# - name: VERIFIER_NAME
+#   value: "testinfra"
 
 stages:
 - stage: ansiblemolecule
@@ -81,8 +81,8 @@ stages:
         /usr/local/bin/molecule -c .config/molecule/config.yml --debug test -s $MOLECULE_SCENARIO_NAME
       displayName: 'Molecule: Run the full tests'
       workingDirectory: '$(build.sourcesdirectory)'
-      env:
-        ANSIBLE_CONFIG: "$HOME/.ansible.cfg"
-        ANSIBLE_REMOTE_PATH: /tmp
-        ANSIBLE_REMOTE_TMP: /tmp
-        VERIFIER_NAME: "testinfra"  
+      # env:
+      #   ANSIBLE_CONFIG: "$HOME/.ansible.cfg"
+      #   ANSIBLE_REMOTE_PATH: /tmp
+      #   ANSIBLE_REMOTE_TMP: /tmp
+      #   VERIFIER_NAME: "testinfra"  
