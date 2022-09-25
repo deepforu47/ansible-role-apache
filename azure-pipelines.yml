@@ -7,8 +7,8 @@ pool:
 
 steps:
 
-- checkout: git://kulsharm2/role-name
-  path: role-name
+- checkout: git://kulsharm2/ansible-role-apache
+  path: ansible-role-apache
 
 - task: UsePythonVersion@0
   inputs:
@@ -22,6 +22,6 @@ steps:
 
 - script: |
     export PATH="$PATH:/home/<user>/.local/bin/"
-    cd $(Agent.BuildDirectory)/role-name
+    cd $(Agent.BuildDirectory)/ansible-role-apache
     molecule test
   displayName: Test relevant platforms
