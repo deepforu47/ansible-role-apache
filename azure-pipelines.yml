@@ -1,20 +1,20 @@
 ---
 trigger:
-- main
+- feature*
 
 pool:
   vmImage: ubuntu-16.04
 
 steps:
 
-- checkout: git://github.com/deepforu47/ansible-role-apache
-  path: ansible-role-apache
+- checkout: git://ansible-role-apache/role-name
+  path: role-name
 
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.8'
 
-- script: python -m pip install "molecule[lint]" "python-vagrant" "molecule-podman" "ansible"
+- script: python -m pip install "molecule[lint]" "python-docker" "molecule-docker" "ansible"
   displayName: Install dependencies
 
 - script: python -m pip install "python-tss-sdk"
@@ -22,6 +22,6 @@ steps:
 
 - script: |
     export PATH="$PATH:/home/<user>/.local/bin/"
-    cd $(Agent.BuildDirectory)/ansible-role-apache
+    cd $(Agent.BuildDirectory)/role-name
     molecule test
   displayName: Test relevant platforms
